@@ -72,7 +72,6 @@
   const heightValue = $('heightValue');
   const scoreValue = $('scoreValue');
   const bestValue = $('bestValue');
-  const biomeValue = $('biomeValue');
   const perkTray = $('perkTray');
   const stateEyebrow = $('stateEyebrow');
   const stateTitle = $('stateTitle');
@@ -884,7 +883,6 @@
       heightValue.textContent = `${formatInt(this.height)} м`;
       scoreValue.textContent = formatInt(this.score);
       bestValue.textContent = formatInt(this.best);
-      biomeValue.textContent = this.biome.name;
       perkTray.innerHTML = '';
       for (const [type, time] of this.activePerks.entries()) {
         const meta = PERKS[type];

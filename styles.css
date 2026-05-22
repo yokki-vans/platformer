@@ -67,14 +67,14 @@ button { font: inherit; color: inherit; }
 
 .hud {
   position: absolute;
-  inset: 10px 10px auto 10px;
+  inset: 10px 104px auto 10px;
   pointer-events: none;
   z-index: 5;
 }
 
 .hud-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 7px;
 }
 
@@ -275,7 +275,6 @@ body.has-touch .app-shell { padding-left: 8px; padding-right: 8px; }
   :root { --mobile-controls-h: 104px; }
   .hud { inset: 8px 8px auto 8px; }
   .hud-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
-  .biome-card { grid-column: span 3; }
   .hud-card { padding: 7px 8px; border-radius: 13px; }
   .top-actions { top: auto; bottom: 10px; right: 10px; }
   .move-btn, .jump-btn { min-height: 74px; border-radius: 24px; }
