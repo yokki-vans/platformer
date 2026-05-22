@@ -1,101 +1,100 @@
 # Skyward Sprout
 
-**Skyward Sprout** — оригинальный вертикальный endless-jumper для браузера на чистых HTML/CSS/JavaScript и Canvas API. Без backend, сборщиков и сторонних игровых ассетов.
+**Skyward Sprout** is a unique vertical endless-jumper for the browser, built using pure HTML/CSS/JavaScript and the Canvas API. No backend, no builders, and no third-party game assets.
 
-Игрок управляет маленьким ростком, который автоматически прыгает от платформ, поднимается через меняющиеся биомы, собирает орбы и бонусы, избегает шипов и летающих врагов. Рекорд и mute-настройка сохраняются в `localStorage`.
+The player controls a small sprout that automatically jumps from platforms, climbs through changing biomes, collects orbs and bonuses, and avoids spikes and flying enemies. High scores and mute settings are saved in localStorage.
 
 ## Live
 
 - GitHub Pages: https://yokki-vans.github.io/platformer/
 - Repository: https://github.com/yokki-vans/platformer
 
-## Управление
+## Controls
 
 ### Desktop
 
-- `←` / `→` — движение
-- `A` / `D` — движение
-- `Space` / `Enter` — старт, рестарт, экстренный прыжок при активном бонусе Double Jump
-- `P` / `Esc` — пауза
+- `←` / `→` — movement
+- `A` / `D` — movement
+- `Space` / `Enter` — start, restart, emergency jump when Double Jump is active
+- `P` / `Esc` — pause
 
 ### Mobile
 
-- Левая/правая кнопка внизу экрана — движение
-- Центральная кнопка — экстренный прыжок, если активен бонус Double Jump
-- Layout использует `100dvh`, safe-area insets и flex-структуру: root flex column, canvas panel `flex: 1; min-height: 0`, controls ниже canvas.
-- На desktop мобильные кнопки скрыты; на touch/mobile viewport — большие доступные кнопки без вертикального скролла.
+- Left/right button at the bottom of the screen — movement
+- Center button — emergency jump when Double Jump is active
+- Layout uses `100dvh`, safe-area insets, and a flex structure: root flex column, canvas panel `flex: 1; min-height: 0`, controls below the canvas.
+- On desktop, mobile buttons are hidden; On touch/mobile viewports — large, accessible buttons without vertical scrolling.
 
-## Фичи
+## Features
 
-- Бесконечная вертикальная генерация платформ.
-- Auto-jump после приземления.
-- Горизонтальное движение с edge wrap.
-- Камера плавно скроллит вверх и не опускается назад.
+- Infinite vertical platform generation.
+- Auto-jump after landing.
+- Horizontal movement with edge wrap.
+- The camera scrolls smoothly upward and does not drop back down.
 - Height, score, best score, biome HUD.
-- Best score и mute state сохраняются в `localStorage`.
-- Состояния: start, playing, pause, game over, restart.
+- Best score and mute state are saved in `localStorage`.
+- States: start, playing, pause, game over, restart.
 - Reachability validation:
-  - генератор рассчитывает `maxJumpHeight = jumpVelocity² / (2 * gravity)`;
-  - учитывает air time и максимальный горизонтальный reach;
-  - вертикальные и горизонтальные gaps держатся внутри safe margin;
-  - hazard-платформа не становится обязательной точкой маршрута;
-  - при spike/hazard платформе создаётся безопасная альтернативная платформа.
-- Типы платформ:
-  - normal
-  - moving
-  - fragile/breaking
-  - boost
-  - hazard/spike
-- Бонусы:
-  - Spring boost
-  - Jetpack / temporary flight
-  - Shield
-  - Magnet
-  - Double / emergency jump
-  - Score Multiplier
-  - Low Gravity
-- Коллекционные орбы дают score.
-- Magnet притягивает collectibles.
-- Spikes и flying enemy завершают run, если нет shield.
-- Shield поглощает один hazard hit.
-- Биомы по высоте:
-  - 0–500: grass/sky
-  - 500–1200: clouds
-  - 1200–2200: snow/ice
-  - 2200–3500: space
-  - 3500+: neon/cosmic
-- Биомы меняют фон, цвета платформ, particles, label и переходят плавно.
-- Canvas-анимации:
-  - player movement/jump/fall/boost
-  - squash/stretch
-  - landing particles
-  - collectible/perk bob/rotation
-  - game over shake
-  - biome transition flash
-- Web Audio API sounds без внешних файлов:
-  - jump
-  - collect
-  - perk
-  - shield/damage
-  - game over
-  - biome transition
-  - button click
+- the generator calculates `maxJumpHeight = jumpVelocity² / (2 * gravity)`;
+- takes airtime and maximum horizontal reach into account;
+- vertical and horizontal gaps are kept within the safe margin;
+- a hazard platform does not become a mandatory waypoint;
+- if a platform spikes/hazards, a safe alternative platform is created.
+- Platform types:
+- normal
+- moving
+- fragile/breaking
+- boost
+- hazard/spike
+- Bonuses:
+- Spring boost
+- Jetpack/temporary flight
+- Shield
+- Magnet
+- Double/emergency jump
+- Score Multiplier
+- Low Gravity
+- Collectible orbs grant score.
+- Magnet attracts collectibles.
+- Spikes and flying enemies end the run if there is no shield.
+- Shield absorbs one hazard hit.
+- Biome heights:
+- 0–500: grass/sky
+- 500–1200: clouds
+- 1200–2200: snow/ice
+- 2200–3500: space
+- 3500+: neon/cosmic
+- Biomes change background, platform colors, particles, and labels, and transition smoothly. - Canvas animations:
+- player movement/jump/fall/boost
+- squash/stretch
+- landing particles
+- collectible/perk bob/rotation
+- game over shake
+- biome transition flash
+- Web Audio API sounds without external files:
+- jump
+- collect
+- perk
+- shield/damage
+- game over
+- biome transition
+- button click
 
-## Локальный запуск
+## Local Run
 
-Можно открыть `index.html` напрямую или запустить статический сервер:
+You can open `index.html` directly or run the static server:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Затем открыть:
+Then open:
 
 ```text
 http://localhost:8080/
 ```
 
-## Структура
+## Structure
 
 ```text
 /index.html
@@ -105,37 +104,37 @@ http://localhost:8080/
 /.github/workflows/pages.yml
 ```
 
-## Проверки
+## Checks
 
-Выполненные локальные проверки:
+Completed local checks:
 
 - `node --check game.js`
-- HTML parse через Python `html.parser`
+- HTML parse via Python `html.parser`
 - YAML parse workflow
 - `git diff --check`
-- Desktop runtime через headless Chrome/CDP:
-  - start/restart
-  - Arrow/A-D movement
-  - pause/resume
-  - shield hit absorption
-  - score multiplier effect
-  - game over state
-- Mobile runtime/layout через headless Chrome/CDP:
-  - viewport 390×844 и 360×640
-  - `docH == innerH`, нет page scroll
-  - mobile controls visible and inside viewport
-  - canvas uses remaining height above controls
-  - pointerdown/pointerup on mobile right button changes movement state
-- Procedural generation validation:
-  - generated sample path to 9000px height
-  - unreachable anchors: 0
-  - hazard-only paths: 0
+- Desktop runtime via headless Chrome/CDP: 
+- start/restart 
+- Arrow/A-D movement 
+- pause/resume 
+- shield hit absorption 
+- score multiplier effect 
+- game over state
+- Mobile runtime/layout via headless Chrome/CDP: 
+- viewport 390×844 and 360×640 
+- `docH == innerH`, no page scroll 
+- mobile controls visible and inside viewport 
+- canvas uses remaining height above controls 
+- pointerdown/pointerup on mobile right button changes movement state
+- Procedural generation validation: 
+- generated sample path to 9000px height 
+- unreachable anchors: 0 
+- hazard-only paths: 0
 
 ## Deployment
 
-Репозиторий настроен под GitHub Pages через GitHub Actions workflow `.github/workflows/pages.yml`.
+The repository is configured to GitHub Pages via the GitHub Actions workflow `.github/workflows/pages.yml`.
 
-После push в ветку `master` workflow публикует корень репозитория на GitHub Pages:
+After pushing to the `master` branch, the workflow publishes the repository root to GitHub Pages:
 
 ```text
 https://yokki-vans.github.io/platformer/
@@ -143,6 +142,6 @@ https://yokki-vans.github.io/platformer/
 
 ## Known limitations
 
-- Это статическая single-player arcade game без серверного leaderboard.
-- Web Audio запускается только после первого пользовательского взаимодействия — это требование браузеров.
-- Touch layout проверен headless-эмуляцией viewport; финальная визуальная проверка на реальном телефоне всё равно полезна из-за различий mobile browser UI/safe-area.
+- This is a static single-player arcade game without a server-side leaderboard.
+- Web Audio starts only after the first user interaction—a browser requirement.
+- Touch layout is verified using headless viewport emulation; a final visual check on a real phone is still useful due to differences in mobile browser UI/safe-area.
